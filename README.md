@@ -31,8 +31,7 @@ This app lets users search for any city, view current weather conditions, and br
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/weather-app.git
-   cd weather-app
+   git clone https://github.com/vicksidhu/weather-forecast-app
    ```
 
 2. **Install dependencies**
