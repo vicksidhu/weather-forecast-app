@@ -41,7 +41,7 @@ This app lets users search for any city, view current weather conditions, and br
 
 3. **Set up environment variables**
    ```bash
-   cp .env.example .env.local
+   cp .env.local
    ```
    Then open `.env.local` and add your API key (see [Environment Variables](#-environment-variables) below).
 
