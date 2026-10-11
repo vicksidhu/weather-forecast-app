@@ -8,11 +8,14 @@ import "./App.css";
 function App() {
   const [units, setUnits] = useState("metric");
   const [lastCity, setLastCity] = useState("");
+  const [showForecast, setShowForecast] = useState(false);
+
 
   const { weather, forecast, loading, error, searchWeather } = useWeather();
 
   function handleSearch(city) {
     setLastCity(city);
+    setShowForecast(false); // hide forecast until user clicks the button
     searchWeather(city, units);
   }
 
@@ -57,8 +60,20 @@ function App() {
       {error && (<p className="error-message" role="alert">{error}</p>)}
       {loading && (<p className="status-message" role="status">Fetching weather data...</p>)}
       {weather && !error && (
-        <CurrentWeather weather={weather} units={units} />)}
-      {forecast && !error && (
+        <>
+          <CurrentWeather weather={weather} units={units} />
+
+          {!showForecast && (
+            <button
+              type="button"
+              className="show-forecast-btn"
+              onClick={() => setShowForecast(true)}>
+              Show 5-day forecast
+            </button>
+          )}
+        </>
+      )}
+      {showForecast && forecast && !error && (
         <Forecast forecast={forecast} units={units} />)}
     </main>
   );

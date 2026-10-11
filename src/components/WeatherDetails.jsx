@@ -3,7 +3,7 @@ function WeatherDetails({ weather, units }) {
     
     //OpenWeatherMap returns visibilty in metres.
     const visibilityInKm = weather.visibility / 1000;
-    const visibilityInMiles = weather.visibility / 1069.344;
+    const visibilityInMiles = weather.visibility / 1609.344;
 
     const visibility = 
     units === "metric"
@@ -13,7 +13,7 @@ function WeatherDetails({ weather, units }) {
     const details = [
         {
             label: "Feels like",
-            value: `${Math.round(weather.main.feels_like)}°`,
+            value: `${Math.round(weather.main.feels_like)}°${units === "metric" ? "C" : "F"}`,
         },
         {
             label: "Humidity",

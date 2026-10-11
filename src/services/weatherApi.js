@@ -19,6 +19,7 @@ export async function getCurrentWeather(city, units = "metric", signal) {
 
     const response = await fetch(url, { signal });
 
+    //Error handling
     if (!response.ok) {
         if (response.status === 404) {
             throw new Error(`City "${city}" not found.`);
@@ -42,6 +43,7 @@ export async function getForecast(city, units = "metric", signal) {
         throw new Error("Weather API key is missing. Check your .env.local file.");
     }
 
+    //5-day forecast endpoint
     const url = new URL(`${BASE_URL}/forecast`);
 
     if (typeof city === "object" && city !== null) {
@@ -55,6 +57,7 @@ export async function getForecast(city, units = "metric", signal) {
 
     const response = await fetch(url, { signal });
 
+    //Error handling
     if (!response.ok) {
         if (response.status === 404) {
             throw new Error("Forecast unavailable for that city.");
